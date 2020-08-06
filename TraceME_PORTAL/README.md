@@ -1,6 +1,6 @@
-# CAFE_PORTAL
-To see detailed information about CAFE, please check the [wiki page](https://github.com/THU-EarthInformationScienceLab/CAFE_NODE/wiki).
-## Before Installing CAFE PORTAL
+# TraceME_PORTAL
+To see detailed information about TraceME, please check the [wiki page](https://github.com/THU-EarthInformationScienceLab/TraceME_NODE/wiki).
+## Before Installing TraceME PORTAL
 `Notice`: This package can be installed in any web server. You can deploy this package either on Windows paltform or on Linux platform. To ensure the application work correctly, following procedures have to be conducted before your installation:
 #### 1.	Installing MySQL Server and Client (http://www.mysql.com/downloads/ )     
 ```Bash 
@@ -36,9 +36,9 @@ e.g. # if the name of your database called userdb
      FLUSH PRIVILEGES;
 ```
 #### 3.	Create database tables.      
-The path of initiation script is: `CAFE_PORTAL/init.sql`     
+The path of initiation script is: `TraceME_PORTAL/init.sql`     
 You have to enter mySQL, use the database in step2 and run this script.      
-You should first enter the directory `CAFE_PORTAL/init.sql` of the CAFE-PORTAL source code folder.
+You should first enter the directory `TraceME_PORTAL/init.sql` of the TraceME-PORTAL source code folder.
 Then You have to enter mySQL using command line `mysql -u {username} -p`, use the database created in `step2` and run the following script.
 ```Bash 
 use {jdbc.database}
@@ -47,7 +47,7 @@ source init.sql;
 #### 4.	Grant write permission. [For Linux]     
 Grant write permission to `ts_search/assets` and `ts_search/protected/runtime`       
 #### 5. Database access configuration.     
-Find the file `CAFE_PORTAL/ts_search/protected/config/main.php` and replace the database information from line `57` to line `64`. For example:
+Find the file `TraceME_PORTAL/ts_search/protected/config/main.php` and replace the database information from line `57` to line `64`. For example:
 ```php		
 'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=userdb',
@@ -59,14 +59,14 @@ Find the file `CAFE_PORTAL/ts_search/protected/config/main.php` and replace the 
 		 ),
 ``` 
 #### 6. Server access configuration.       
-find the file `CAFE_PORTAL/ts_search/protected/models/TSInterface.php` and modify the NODE server root address in line2, for example, if you want to connect the web appication to the CAFE node configured on 100.101.100.111:8088, the root path in the tomcat server of that node is  `/worker-node`, you can use following code:
+find the file `TraceME_PORTAL/ts_search/protected/models/TSInterface.php` and modify the NODE server root address in line2, for example, if you want to connect the web appication to the TraceME node configured on 100.101.100.111:8088, the root path in the tomcat server of that node is  `/worker-node`, you can use following code:
 ```php
 define('TSInterfaceROOT','http://100.101.100.111:8088/worker-node/');   
 ``` 
 #### 7. Modify the virtual directory.     
 ```Bash 
 sudo vi /etc/apache2/sites-enabled/000-default  
-# Then Configure the virtual directory `/CAFE_PORTAL/ts_search` after "DocumentRoot" keyword
+# Then Configure the virtual directory `/TraceME_PORTAL/ts_search` after "DocumentRoot" keyword
 # OR you can use symlink
 sudo /etc/init.d/apache2 restart    #restart Apache
 ``` 
