@@ -25,7 +25,8 @@ Computes Regional (global) tracability analysis (specific area).
   python3 --version
   ```
 
-|mudule|description|version|
+The modules of python that TraceME needs
+|module|description|version|
 |:----|----|----|
 |numpy|The fundamental package for array computing with Python|1.18.3|
 |netCDF4|Provides an object-oriented python interface to the netCDF version 4 library|1.5.3|
