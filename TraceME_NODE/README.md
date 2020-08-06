@@ -1,5 +1,5 @@
 # TraceME_NODE
-To see detailed information about TraceME, please check the [wiki page](https://github.com/ECNU-RCGCEF/TraceME/TraceME_NODE/wiki).
+To see detailed information about TraceME, please check the [wiki page](https://github.com/ECNU-RCGCEF/TraceME/wiki).
 
 You can also see check this [paper](https://doi.org/10.5194/gmd-2020-76) describing the whole system.
 ## Before your Installation
