@@ -1,5 +1,5 @@
 # TraceME_PORTAL
-To see detailed information about TraceME, please check the [wiki page](https://github.com/THU-EarthInformationScienceLab/TraceME_NODE/wiki).
+To see detailed information about TraceME, please check the [wiki page](https://github.com/ECNU-RCGCEF/TraceME_NODE/wiki).
 ## Before Installing TraceME PORTAL
 `Notice`: This package can be installed in any web server. You can deploy this package either on Windows paltform or on Linux platform. To ensure the application work correctly, following procedures have to be conducted before your installation:
 #### 1.	Installing MySQL Server and Client (http://www.mysql.com/downloads/ )     
