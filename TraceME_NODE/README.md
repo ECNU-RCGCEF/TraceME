@@ -114,10 +114,6 @@ You could access this web page（`http://{host}:{port}/{war package name}/web/de
 `Note`:the root path of your Node is `/{war package name}`, for example, if your war name is `datamanager-worker.war`, the root path will be `datamanager-worker`. The `{port}` is the port of Tomcat. Here you can also deploy the worker node as a local node, (then configure server accesss in cafe_portal configuration, change ip address to localhost)                
 ### 7.  Data indexing.      
 For worker nodes, you could access the web page `http://{host}: {port}/{war package name}/web/parser`, input the root folder of the data archive mounted on the node server and submit the form from the webpage, the data in this node will then be indexed automatically. The information of the data will be synchronously updated locally and remotely. You will be redirected to `http://{your-workernode}/datamanager-web-worker/web/parser/run` and see `{"success":true}` if successful.
-
-      An example of data path configuration:
-          
-![image](https://github.com/Theropod/CAFE_NODE/blob/master/parse-data-configuration.png?raw=true)
-          
+                   
      In this case, you can configure the path as `/CMOR/node2`
              
