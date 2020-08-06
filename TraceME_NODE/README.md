@@ -1,7 +1,7 @@
-# CAFE_NODE
-To see detailed information about CAFE, please check the [wiki page](https://github.com/THU-EarthInformationScienceLab/CAFE_NODE/wiki).
+# TraceME_NODE
+To see detailed information about TraceME, please check the [wiki page](https://github.com/ECNU-RCGCEF/TraceME/TraceME_NODE/wiki).
 
-You can also see check this [paper](https://doi.org/10.1016/j.envsoft.2018.09.007) describing the whole system.
+You can also see check this [paper](https://doi.org/10.5194/gmd-2020-76) describing the whole system.
 ## Before your Installation
 `Notice`: This package should be installed on the server-side. Data archives need to be read from this server. As the function of this package is limited by some other external applications, a Linux environment is required. To ensure the node work correctly, following applications have to be installed before your installation:       
 #### 1.	MySQL Server and Client (http://dev.mysql.com/downloads/mysql/5.6.html#downloads )     
@@ -64,7 +64,7 @@ sudo apt-get install maven       #For Ubuntu user
 3.	ncl_env=NCARG_ROOT=/usr/local/ncl              #The environment variable of NCL
 4.	ScriptFolder=/usr/local/nclscripts/            #The folder stores analytic scripts
 ```
-#### As a beginner, you need to download default analytic scripts [CAFE_SCRIPTS](https://github.com/THU-EarthInformationScienceLab/CAFE_SCRIPTS) and place all the scripts in `nclscripts` folder to the `ScriptFolder` so that you could later make use of these analytic functions.
+#### As a beginner, you need to download default analytic scripts [TraceME_SCRIPTS](https://github.com/ECNU-RCGCEF/TraceME/TraceME_SCRIPTS) and place all the scripts in `scripts` folder to the `ScriptFolder` so that you could later make use of these analytic functions.
 
 #### PAY ATTENTION: Since this version only support `CF-compliant netCDF files`, you may have to reorganize the file names and directories of your data to the specific structure. You may have to refer to this site to reorganize your data archive: `http://cmip-pcmdi.llnl.gov/cmip5/output_req.html ` A software has been provided for reorganization in this web page.
 ### When all the preparations are done, you could begin to set up this package.
@@ -79,23 +79,23 @@ e.g. CREATE USER 'username'@'%' IDENTIFIED BY 'password';
 ### 2.	Creating a database. 
 Create a database then grand privileges to the database user {`jdbc.user`} created in `step 1` and obtain the database name {`jdbc.database`}
 ```Bash 
-e.g. # if the name of your database called CAFENODE, then jdbc.database=CAFENODE
+e.g. # if the name of your database called TraceMENODE, then jdbc.database=TraceMENODE
      # if your username is guest, password is '123456', then jdbc.user=geust, jdbc.password=123456
      # you can enter mySQL using command line 'mysql -u guest -p', then use following codes.
-     GRANT all privileges ON CAFENODE.* TO 'username'@'%'
+     GRANT all privileges ON TraceMENODE.* TO 'username'@'%'
      FLUSH PRIVILEGES;
 ```
 `Note`: To ensure the database can be connected using ip and from remote servers, '%' should be used.
 ### 3.  Creating database tables. 
 The path of initiation script is: `db-init/src/main/resources/init.sql`
-You should first enter the directory `db-init/src/main/resources` of the CAFE-NODE source code folder.
+You should first enter the directory `db-init/src/main/resources` of the TraceME-NODE source code folder.
 Then You have to enter mySQL using command line `mysql -u {username} -p`, use the database in `step2` and run this script.
 ```Bash 
 use {jdbc.database}
 source init.sql;
 ```
 ### 4.  Packaging.
-You have to enter the root directory of CAFE_NODE folder.
+You have to enter the root directory of TraceME_NODE folder.
 Then you could use following command to compile the codes and generate a `.war` package:
 ```Bash 
 mvn clean package -Dmaven.test.skip=true -Djdbc.host=${jdbc.host} -Djdbc.port=${jdbc.port} -Djdbc.database=${jdbc.database} -Djdbc.user=${ jdbc.user} -Djdbc.password=${jdbc.password} -DlogDir=${logDir}
@@ -103,8 +103,8 @@ mvn clean package -Dmaven.test.skip=true -Djdbc.host=${jdbc.host} -Djdbc.port=${
 `Note`:the `.war` package is under `datamanager-web/target/`
 you have to replace ${} to the parameters in `step1` and `step2`, for example:
 ```Bash 
-mvn clean package -Dmaven.test.skip=true -Djdbc.host=101.100.101.100 -Djdbc.port=3306 -Djdbc.database=CAFENODE -Djdbc.user=abc -Djdbc.password=123456 -DlogDir=/usr/local/CAFE/log 
-# ${logDir} is your log directory for CAFE. If this directory does not exit, have to create it first.
+mvn clean package -Dmaven.test.skip=true -Djdbc.host=101.100.101.100 -Djdbc.port=3306 -Djdbc.database=TraceMENODE -Djdbc.user=abc -Djdbc.password=123456 -DlogDir=/usr/local/TraceME/log 
+# ${logDir} is your log directory for TraceME. If this directory does not exit, have to create it first.
 ```
 ### 5.  Deploying the war package under the Tomcat.
 You could rename the `.war` package and place it under `tomcat/webapps`. Then you have to start Tomcat service. The name of the war package will determine the access path of the web application. For example, if the name of the war package is `datamanager-worker.war`, then after deployment, the access address will be `http://{host}:{port}/datamanager-worker`
