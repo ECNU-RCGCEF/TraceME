@@ -179,10 +179,10 @@ border:solid 1px #0e509e
 		</div>
 		<div class="field" id="spatial-ranger-box">
 			<div class="field-title">*Spatial Ranger</div>
-			<div><span>North: </span><INPUT name="latMax"/></div>
-			<div><span>South: </span><INPUT name="latMin"/></div>
-			<div><span>West: </span><INPUT name="lonMin"/></div>
-			<div><span>East: </span><INPUT name="lonMax"/></div>
+			<div><span>North: </span><INPUT name="latMax" value=90 /></div>
+			<div><span>South: </span><INPUT name="latMin" value=-90 /></div>
+			<div><span>West: </span><INPUT name="lonMin" value=0 /></div>
+			<div><span>East: </span><INPUT name="lonMax" value=360 /></div>
 		</div>
 		<div class="field">
 			Task Name:
